@@ -3,27 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35323.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metahook.Plugin", "Source\Metahook.Plugin\Metahook.Plugin.csproj", "{0C4549C4-B074-4C00-A06C-0EEBA88B4F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metahook.Plugin", "Source\Metahook.Plugin\Metahook.Plugin.csproj", "{0C4549C4-B074-4C00-A06C-0EEBA88B4F01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sdk", "Sdk", "{6FB4A057-E3AF-470C-AB97-01737F787AE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amxmodx.Net", "Source\Sdk\Amxmodx.Net\Amxmodx.Net.csproj", "{1279AC97-F2D2-40E4-9617-0D19D605BF53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amxmodx.Net", "Source\Sdk\Amxmodx.Net\Amxmodx.Net.csproj", "{1279AC97-F2D2-40E4-9617-0D19D605BF53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLSDK.Net", "Source\Sdk\HLSDK.Net\HLSDK.Net.csproj", "{8D6C1BD9-8E4D-44F0-8AA2-68ED20846A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLSDK.Net", "Source\Sdk\HLSDK.Net\HLSDK.Net.csproj", "{8D6C1BD9-8E4D-44F0-8AA2-68ED20846A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metahook.Net", "Source\Sdk\Metahook.Net\Metahook.Net.csproj", "{9FDF4F22-EC65-4CF6-9795-A01C294354C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metahook.Net", "Source\Sdk\Metahook.Net\Metahook.Net.csproj", "{9FDF4F22-EC65-4CF6-9795-A01C294354C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amxmodx.Module", "Source\Amxmodx.Module\Amxmodx.Module.csproj", "{58DEC5D8-3634-42F3-84E3-A64F9A29007A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amxmodx.Module", "Source\Amxmodx.Module\Amxmodx.Module.csproj", "{58DEC5D8-3634-42F3-84E3-A64F9A29007A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaMod.Net", "Source\Sdk\MetaMod.Net\MetaMod.Net.csproj", "{9048E1CD-B52E-4CD3-8C66-D6F8EDD3D063}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaMod.Net", "Source\Sdk\MetaMod.Net\MetaMod.Net.csproj", "{9048E1CD-B52E-4CD3-8C66-D6F8EDD3D063}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amxmodx.SourceGenerator", "Source\SourceGenerators\AmxxModuleSourceGenerator\Amxmodx.SourceGenerator.csproj", "{2AEB7AE9-3B3F-4641-8A57-B403A6F86EFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amxmodx.SourceGenerator", "Source\SourceGenerators\AmxxModuleSourceGenerator\Amxmodx.SourceGenerator.csproj", "{2AEB7AE9-3B3F-4641-8A57-B403A6F86EFF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SourceGenerators", "SourceGenerators", "{59E0528B-825D-47A3-A08D-34422B672943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amxmodx.Framework", "Source\Framework\AmxxModuleFramework\Amxmodx.Framework.csproj", "{099F4096-ADCC-4BCD-A5F9-E9F426D49D71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amxmodx.Framework", "Source\Framework\AmxxModuleFramework\Amxmodx.Framework.csproj", "{099F4096-ADCC-4BCD-A5F9-E9F426D49D71}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{3F136CA9-15CF-4463-BC62-2626EB05C8A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forward-event-code-example", "Forward-event-code-example\Forward-event-code-example.csproj", "{64B469FA-7498-404F-9C2E-71053362EB9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{099F4096-ADCC-4BCD-A5F9-E9F426D49D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{099F4096-ADCC-4BCD-A5F9-E9F426D49D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{099F4096-ADCC-4BCD-A5F9-E9F426D49D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B469FA-7498-404F-9C2E-71053362EB9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B469FA-7498-404F-9C2E-71053362EB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B469FA-7498-404F-9C2E-71053362EB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B469FA-7498-404F-9C2E-71053362EB9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
