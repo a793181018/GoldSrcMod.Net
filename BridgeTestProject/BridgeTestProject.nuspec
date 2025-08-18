@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>BridgeTestProject</id>
+    <version>1.0.2-alpha</version>
+    <description>Amxmodx Module</description>
+    <authors>CeSun</authors>
+    <packageTypes>
+      <packageType name="BridgeTestProject" />
+    </packageTypes>
+  </metadata>
+    <files>
+    <file src=".\**" target="BridgeTestProject" exclude="**\bin\**;**\obj\**;.\.vs\**;**\Metahook.Plugin.Template.csproj.user;**\Properties\**;.\BridgeTestProject.nuspec" />
+  </files>
+</package>

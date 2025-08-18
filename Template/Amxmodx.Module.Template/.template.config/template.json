@@ -10,6 +10,17 @@
     "type": "project"
   },
   "sourceName": "Amxmodx.Module.Template",
-  "preferNameDirectory": true
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [".template.config/**/*"]
+    },
+    {
+      "source": "Bridge",
+      "target": "Bridge"
+    }
+  ]
 }
    
