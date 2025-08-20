@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using AmxModx.Bridge;
 using AmxModx.Bridge.Natives;
 
 namespace AmxModx.Wrappers.System
@@ -12,6 +13,13 @@ namespace AmxModx.Wrappers.System
     /// </summary>
     public static class NativeManager
     {
+        /// <summary>
+        /// 初始化本地管理器
+        /// </summary>
+        public static void Initialize()
+        {
+            // 初始化本地函数系统
+        }
         /// <summary>
         /// 将指针转换为字符串
         /// </summary>
@@ -56,28 +64,30 @@ namespace AmxModx.Wrappers.System
         /// <summary>
         /// 获取AMX本地函数地址
         /// </summary>
+        /// <param name="amx">AMX实例指针</param>
         /// <param name="functionName">函数名称</param>
         /// <returns>函数指针</returns>
-        public static IntPtr GetNativeFunction(string functionName)
+        public static IntPtr GetNativeFunction(IntPtr amx, string functionName)
         {
-            if (string.IsNullOrEmpty(functionName))
+            if (string.IsNullOrEmpty(functionName) || amx == IntPtr.Zero)
                 return IntPtr.Zero;
 
-            return NativeBridge.AmxModx_Bridge_GetNativeFunction(functionName);
+            return NativeBridge.AmxModx_Bridge_GetNativeFunction(amx, functionName);
         }
 
         /// <summary>
         /// 调用AMX本地函数
         /// </summary>
+        /// <param name="amx">AMX实例指针</param>
         /// <param name="functionName">函数名称</param>
         /// <param name="args">参数数组</param>
         /// <returns>函数返回值</returns>
-        public static int CallNativeFunction(string functionName, params object[] args)
+        public static int CallNativeFunction(IntPtr amx, string functionName, params object[] args)
         {
-            if (string.IsNullOrEmpty(functionName))
+            if (string.IsNullOrEmpty(functionName) || amx == IntPtr.Zero)
                 return 0;
 
-            IntPtr funcPtr = GetNativeFunction(functionName);
+            IntPtr funcPtr = GetNativeFunction(amx, functionName);
             if (funcPtr == IntPtr.Zero)
                 return 0;
 
@@ -110,14 +120,15 @@ namespace AmxModx.Wrappers.System
         /// <summary>
         /// 检查本地函数是否存在
         /// </summary>
+        /// <param name="amx">AMX实例指针</param>
         /// <param name="functionName">函数名称</param>
         /// <returns>存在返回true，不存在返回false</returns>
-        public static bool NativeFunctionExists(string functionName)
+        public static bool NativeFunctionExists(IntPtr amx, string functionName)
         {
-            if (string.IsNullOrEmpty(functionName))
+            if (string.IsNullOrEmpty(functionName) || amx == IntPtr.Zero)
                 return false;
 
-            return GetNativeFunction(functionName) != IntPtr.Zero;
+            return GetNativeFunction(amx, functionName) != IntPtr.Zero;
         }
 
         /// <summary>
@@ -201,7 +212,32 @@ namespace AmxModx.Wrappers.System
 
             int size = Marshal.SizeOf(typeof(T)) * array.Length;
             IntPtr ptr = Marshal.AllocHGlobal(size);
-            Marshal.Copy(array, 0, ptr, array.Length);
+            
+            if (typeof(T) == typeof(byte))
+            {
+                Marshal.Copy(array as byte[] ?? Array.Empty<byte>(), 0, ptr, array.Length);
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                Marshal.Copy(array as int[] ?? Array.Empty<int>(), 0, ptr, array.Length);
+            }
+            else if (typeof(T) == typeof(float))
+            {
+                Marshal.Copy(array as float[] ?? Array.Empty<float>(), 0, ptr, array.Length);
+            }
+            else
+            {
+                // 对于其他类型，使用通用方法
+                unsafe
+                {
+                    byte* bytePtr = (byte*)ptr.ToPointer();
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        Marshal.StructureToPtr(array[i], new IntPtr(bytePtr + i * Marshal.SizeOf(typeof(T))), false);
+                    }
+                }
+            }
+            
             return ptr;
         }
 
@@ -217,7 +253,42 @@ namespace AmxModx.Wrappers.System
                 return new T[0];
 
             T[] array = new T[length];
-            Marshal.Copy(ptr, array, 0, length);
+            
+            if (typeof(T) == typeof(byte))
+            {
+                byte[] byteArray = new byte[length];
+                Marshal.Copy(ptr, byteArray, 0, length);
+                array = (T[])(object)byteArray;
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                int[] intArray = new int[length];
+                Marshal.Copy(ptr, intArray, 0, length);
+                array = (T[])(object)intArray;
+            }
+            else if (typeof(T) == typeof(float))
+            {
+                float[] floatArray = new float[length];
+                Marshal.Copy(ptr, floatArray, 0, length);
+                array = (T[])(object)floatArray;
+            }
+            else
+            {
+                // 对于其他类型，使用通用方法
+                unsafe
+                {
+                    byte* bytePtr = (byte*)ptr.ToPointer();
+                    for (int i = 0; i < length; i++)
+                    {
+                        object? structure = Marshal.PtrToStructure(new IntPtr(bytePtr + i * Marshal.SizeOf(typeof(T))), typeof(T));
+                        if (structure != null)
+                        {
+                            array[i] = (T)structure;
+                        }
+                    }
+                }
+            }
+            
             return array;
         }
 
@@ -229,6 +300,13 @@ namespace AmxModx.Wrappers.System
         {
             if (ptr != IntPtr.Zero)
                 Marshal.FreeHGlobal(ptr);
+        }
+        /// <summary>
+        /// 清理本地管理器资源
+        /// </summary>
+        public static void Cleanup()
+        {
+            // 本地函数管理无需要清理的特定资源
         }
     }
 }

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PublishAot>true</PublishAot>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AssemblyName>$(MSBuildProjectName.Replace(".", ""))_amxx</AssemblyName>
+		<!-- 隐藏特定警告 -->
+		<NoWarn>CS8600;CS8604;CS8603;CS0414;IL3050</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+    	<PackageReference Include="Amxmodx.Net" Version="1.0.2-alpha" />
+	</ItemGroup>
+
+</Project>

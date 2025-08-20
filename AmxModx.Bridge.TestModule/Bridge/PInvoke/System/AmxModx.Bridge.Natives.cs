@@ -1,4 +1,4 @@
-// vim: set ts=4 sw=4 tw=99 noet:
+﻿// vim: set ts=4 sw=4 tw=99 noet:
 using System;
 using System.Runtime.InteropServices;
 
@@ -72,10 +72,10 @@ namespace AmxModx.Bridge.Natives
     /// 原生函数委托
     /// </summary>
     /// <param name="amx">AMX实例指针</param>
-    /// <param name="params">参数数组</param>
+    /// <param name="parameters">参数数组</param>
     /// <returns>返回值</returns>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int NativeDelegate(IntPtr amx, IntPtr params);
+    public delegate int NativeDelegate(IntPtr amx, IntPtr parameters);
 
     /// <summary>
     /// 原生函数桥接类
@@ -276,5 +276,26 @@ namespace AmxModx.Bridge.Natives
         /// <returns>函数指针</returns>
         [DllImport("amxmodx_mm", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr AmxModx_Bridge_GetNativeFunction(IntPtr amx, [MarshalAs(UnmanagedType.LPStr)] string functionName);
+
+        /// <summary>
+        /// 调用本地函数
+        /// </summary>
+        /// <param name="amx">AMX实例指针</param>
+        /// <param name="func">函数指针</param>
+        /// <param name="args">参数数组</param>
+        /// <returns>返回值</returns>
+        [DllImport("amxmodx_mm", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int AmxModx_Bridge_CallNativeFunction(IntPtr amx, IntPtr func, [In] int[] args);
+
+        /// <summary>
+        /// 调用本地函数（简化版本）
+        /// </summary>
+        /// <param name="func">函数指针</param>
+        /// <param name="args">参数数组</param>
+        /// <returns>返回值</returns>
+        public static int AmxModx_Bridge_CallNativeFunction(IntPtr func, int[] args)
+        {
+            return AmxModx_Bridge_CallNativeFunction(IntPtr.Zero, func, args);
+        }
     }
 }
