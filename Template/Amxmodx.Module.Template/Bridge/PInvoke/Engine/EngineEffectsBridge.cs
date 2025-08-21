@@ -227,7 +227,7 @@ namespace AmxModx.Bridge.Engine
         /// </summary>
         public static int CreateLight(float[] origin, float radius, int red, int green, int blue, float life = 5.0f)
         {
-            return EngineEffectsBridge.Engine_LightCreate(origin, radius, red, green, blue, life, 0);
+            return EngineEffectsBridge.Engine_LightCreate(origin, radius, (byte)red, (byte)green, (byte)blue, life, 0);
         }
 
         /// <summary>

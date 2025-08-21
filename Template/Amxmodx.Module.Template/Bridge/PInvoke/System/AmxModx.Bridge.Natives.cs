@@ -72,10 +72,10 @@ namespace AmxModx.Bridge.Natives
     /// 原生函数委托
     /// </summary>
     /// <param name="amx">AMX实例指针</param>
-    /// <param name="params">参数数组</param>
+    /// <param name="parameters">参数数组</param>
     /// <returns>返回值</returns>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int NativeDelegate(IntPtr amx, IntPtr params);
+    public delegate int NativeDelegate(IntPtr amx, IntPtr parameters);
 
     /// <summary>
     /// 原生函数桥接类

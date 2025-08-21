@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using AmxModx.Bridge.Engine;
+using System.Text;
 
 namespace AmxModx.Bridge.Engine
 {
@@ -263,7 +264,7 @@ namespace AmxModx.Bridge.Engine
             int length = Engine_GetEntityClassName(entityId, buffer, bufferSize);
             if (length <= 0) return string.Empty;
             
-            return System.Text.Encoding.UTF8.GetString(buffer, 0, length);
+            return Encoding.UTF8.GetString(buffer, 0, length);
         }
 
         /// <summary>
@@ -278,7 +279,7 @@ namespace AmxModx.Bridge.Engine
             int length = Engine_GetEntityModelName(entityId, buffer, bufferSize);
             if (length <= 0) return string.Empty;
             
-            return System.Text.Encoding.UTF8.GetString(buffer, 0, length);
+            return Encoding.UTF8.GetString(buffer, 0, length);
         }
 
         /// <summary>

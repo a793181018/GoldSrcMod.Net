@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace AmxModx.Bridge.Template
 {
@@ -52,7 +53,7 @@ namespace AmxModx.Bridge.Template
             int length = Template_GetInfo(buffer, buffer.Length);
             if (length <= 0) return string.Empty;
             
-            return System.Text.Encoding.UTF8.GetString(buffer, 0, Math.Min(length, buffer.Length));
+            return Encoding.UTF8.GetString(buffer, 0, Math.Min(length, buffer.Length));
         }
 
         /// <summary>

@@ -44,8 +44,8 @@ namespace AmxModx.Bridge.Config
             int length = AmxModx_Bridge_GetConfigValue(configHandle, key, buffer, buffer.Length);
             if (length <= 0)
                 return string.Empty;
-
-            return System.Text.Encoding.UTF8.GetString(buffer, 0, Math.Min(length, buffer.Length));
+           
+            return Encoding.UTF8.GetString(buffer, 0, Math.Min(length, buffer.Length));
         }
     }
 }

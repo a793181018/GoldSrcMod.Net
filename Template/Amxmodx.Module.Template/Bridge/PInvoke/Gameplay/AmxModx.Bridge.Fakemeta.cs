@@ -798,21 +798,21 @@ namespace AmxModx.Bridge.Fakemeta
         /// <param name="callback">lambda回调</param>
         /// <param name="timing">执行时机</param>
         /// <returns>注册句柄</returns>
-        public static int OnEntityCreate(this Func<int, ForwardResult> callback, ForwardTiming timing = ForwardTiming.Pre)
+        public static int OnEntityCreate(this EntityForwardCallback callback, ForwardTiming timing = ForwardTiming.Pre)
         {
             return FakemetaCallbacks.OnEntityCreate(callback, timing);
         }
 
-        /// <summary>
-        /// 使用lambda表达式注册玩家连接事件
-        /// </summary>
-        /// <param name="callback">lambda回调</param>
-        /// <param name="timing">执行时机</param>
-        /// <returns>注册句柄</returns>
-        public static int OnPlayerConnect(this Func<int, string, ForwardResult> callback, ForwardTiming timing = ForwardTiming.Pre)
-        {
-            return FakemetaCallbacks.OnPlayerConnect(callback, timing);
-        }
+        ///// <summary>
+        ///// 使用lambda表达式注册玩家连接事件
+        ///// </summary>
+        ///// <param name="callback">lambda回调</param>
+        ///// <param name="timing">执行时机</param>
+        ///// <returns>注册句柄</returns>
+        //public static int OnPlayerConnect(this EntityForwardCallback callback, ForwardTiming timing = ForwardTiming.Pre)
+        //{
+        //    return FakemetaCallbacks.OnPlayerConnect(callback, timing);
+        //}
 
         /// <summary>
         /// 使用lambda表达式注册每帧事件
@@ -820,7 +820,7 @@ namespace AmxModx.Bridge.Fakemeta
         /// <param name="callback">lambda回调</param>
         /// <param name="timing">执行时机</param>
         /// <returns>注册句柄</returns>
-        public static int OnStartFrame(this Func<ForwardResult> callback, ForwardTiming timing = ForwardTiming.Pre)
+        public static int OnStartFrame(this VoidForwardCallback callback, ForwardTiming timing = ForwardTiming.Pre)
         {
             return FakemetaCallbacks.OnStartFrame(callback, timing);
         }

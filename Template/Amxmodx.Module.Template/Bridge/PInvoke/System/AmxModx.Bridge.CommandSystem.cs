@@ -10,6 +10,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Text;
 
 namespace AmxModx.Bridge.CommandSystem
 {
@@ -346,8 +347,8 @@ namespace AmxModx.Bridge.CommandSystem
                     (int)type, i, access, cmdBuffer, cmdBuffer.Length,
                     infoBuffer, infoBuffer.Length, out flags) != 0)
                 {
-                    string cmdName = System.Text.Encoding.UTF8.GetString(cmdBuffer).TrimEnd('\0');
-                    string cmdInfo = System.Text.Encoding.UTF8.GetString(infoBuffer).TrimEnd('\0');
+                    string cmdName = Encoding.UTF8.GetString(cmdBuffer).TrimEnd('\0');
+                    string cmdInfo = Encoding.UTF8.GetString(infoBuffer).TrimEnd('\0');
 
                     commands.Add(new CommandInfo
                     {

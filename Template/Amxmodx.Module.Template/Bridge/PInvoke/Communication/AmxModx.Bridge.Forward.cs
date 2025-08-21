@@ -190,8 +190,8 @@ namespace AmxModx.Bridge
             /// <summary>
             /// 已注册的转发器字典
             /// </summary>
-            private static System.Collections.Generic.Dictionary<string, int> forwards = 
-                new System.Collections.Generic.Dictionary<string, int>();
+            private static Dictionary<string, int> forwards = 
+                new Dictionary<string, int>();
 
             /// <summary>
             /// 注册全局转发器
@@ -243,7 +243,7 @@ namespace AmxModx.Bridge
             {
                 foreach (var forwardId in forwards.Values)
                 {
-                    DestroyForward(forwardId);
+                    AmxModx_Bridge_DestroyForward(forwardId);
                 }
                 forwards.Clear();
             }
