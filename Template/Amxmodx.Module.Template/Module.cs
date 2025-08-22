@@ -400,6 +400,22 @@ public unsafe static class Module
         {
             g_fn_IsPlayerHLTV = (delegate* unmanaged[Cdecl]<int, int>)reqFnptrFunc(funName);
         }
+        using (var funName = "ServerCommand".GetNativeString())
+        {
+            g_fn_ServerCommand = (delegate* unmanaged[Cdecl]<sbyte*, void>)reqFnptrFunc(funName);
+        }
+        using (var funName = "GetPlayerCurrentWeapon".GetNativeString())
+        {
+            g_fn_GetPlayerCurrentWeapon = (delegate* unmanaged[Cdecl]<int, int>)reqFnptrFunc(funName);
+        }
+        using (var funName = "GivePlayerItem".GetNativeString())
+        {
+            g_fn_GivePlayerItem = (delegate* unmanaged[Cdecl]<int, sbyte*, void>)reqFnptrFunc(funName);
+        }
+        using (var funName = "CreateExplosion".GetNativeString())
+        {
+            g_fn_CreateExplosion = (delegate* unmanaged[Cdecl]<float*, float, float, int, void>)reqFnptrFunc(funName);
+        }
         using (var funName = "GetPlayerArmor".GetNativeString())
         {
             g_fn_GetPlayerArmor = (delegate* unmanaged[Cdecl]<int, int>)reqFnptrFunc(funName);
@@ -407,6 +423,30 @@ public unsafe static class Module
         using (var funName = "GetPlayerHealth".GetNativeString())
         {
             g_fn_GetPlayerHealth = (delegate* unmanaged[Cdecl]<int, int>)reqFnptrFunc(funName);
+        }
+        using (var funName = "SetPlayerHealth".GetNativeString())
+        {
+            g_fn_SetPlayerHealth = (delegate* unmanaged[Cdecl]<int, int, void>)reqFnptrFunc(funName);
+        }
+        using (var funName = "GetPlayerArmor".GetNativeString())
+        {
+            g_fn_GetPlayerArmor = (delegate* unmanaged[Cdecl]<int, int>)reqFnptrFunc(funName);
+        }
+        using (var funName = "SetPlayerArmor".GetNativeString())
+        {
+            g_fn_SetPlayerArmor = (delegate* unmanaged[Cdecl]<int, int, void>)reqFnptrFunc(funName);
+        }
+        using (var funName = "SetPlayerGravity".GetNativeString())
+        {
+            g_fn_SetPlayerGravity = (delegate* unmanaged[Cdecl]<int, float, void>)reqFnptrFunc(funName);
+        }
+        using (var funName = "SetPlayerMaxSpeed".GetNativeString())
+        {
+            g_fn_SetPlayerMaxSpeed = (delegate* unmanaged[Cdecl]<int, float, void>)reqFnptrFunc(funName);
+        }
+        using (var funName = "SetPlayerRenderMode".GetNativeString())
+        {
+            g_fn_SetPlayerRenderMode = (delegate* unmanaged[Cdecl]<int, int, void>)reqFnptrFunc(funName);
         }
         using (var funName = "GetPlayerFlags".GetNativeString())
         {

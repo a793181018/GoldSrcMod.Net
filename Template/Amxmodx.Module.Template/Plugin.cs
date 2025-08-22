@@ -4,6 +4,7 @@ using GoldSrc.HLSDK.Native;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static Module.Global;
+using Amxmodx.Bridge.ZombieLevel;
 #pragma warning disable CS8981
 using cell = int;
 #pragma warning restore CS8981
@@ -20,7 +21,6 @@ public unsafe class Plugin
         
         nativeInfo[0].name = "TestHelloModule".GetNativeString();
         nativeInfo[0].func = (nint)(delegate* unmanaged[Cdecl]<AMX*, int*, int>)&Plugin.TestHelloModule;
-
 
         nativeInfo[1].name = null;
         nativeInfo[1].func = nint.Zero;
@@ -55,6 +55,12 @@ public unsafe class Plugin
     {
         // 测试注册函数
         g_fn_AddNatives(Plugin.nativeInfo);
+        
+        // 注册僵尸等级系统原生函数
+        g_fn_AddNatives(ZombieLevelNative.nativeInfo);
+        
+        // 初始化僵尸等级系统
+        ZombieLevelSystem.Initialize();
     }
 
     public static void FN_AMXX_DETACH()
