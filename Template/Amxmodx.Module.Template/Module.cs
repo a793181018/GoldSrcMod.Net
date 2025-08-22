@@ -1,4 +1,4 @@
-﻿using GoldSrc.Amxmodx;
+using GoldSrc.Amxmodx;
 using GoldSrc.Amxmodx.Native;
 using GoldSrc.HLSDK;
 using GoldSrc.HLSDK.Native;

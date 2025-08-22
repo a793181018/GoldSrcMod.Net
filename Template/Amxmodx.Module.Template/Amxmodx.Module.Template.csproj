@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
@@ -10,8 +10,17 @@
 		<AssemblyName>$(MSBuildProjectName.Replace(".", ""))_amxx</AssemblyName>
 	</PropertyGroup>
 
+
+	
 	<ItemGroup>
     	<PackageReference Include="Amxmodx.Net" Version="1.0.2-alpha" />
+	</ItemGroup>
+
+
+	
+	<ItemGroup>
+	  <Folder Include="TestSuite\CommunicationTests\" />
+	  <Folder Include="TestSuite\TestHelpers\" />
 	</ItemGroup>
 
 </Project>
